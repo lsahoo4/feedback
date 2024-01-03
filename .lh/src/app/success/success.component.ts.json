@@ -1,0 +1,18 @@
+{
+    "sourceFile": "src/app/success/success.component.ts",
+    "activeCommit": 0,
+    "commits": [
+        {
+            "activePatchIndex": 0,
+            "patches": [
+                {
+                    "date": 1704275482558,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n"
+                }
+            ],
+            "date": 1704275482558,
+            "name": "Commit-0",
+            "content": "import { Component } from '@angular/core';\nimport { RouterLink } from '@angular/router';\n\n@Component({\n  selector: 'app-success',\n  standalone: true,\n  imports: [RouterLink],\n  templateUrl: './success.component.html',\n  styleUrl: './success.component.css'\n})\nexport class SuccessComponent {\n\n}\n"
+        }
+    ]
+}

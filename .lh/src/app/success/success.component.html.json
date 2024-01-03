@@ -1,0 +1,22 @@
+{
+    "sourceFile": "src/app/success/success.component.html",
+    "activeCommit": 0,
+    "commits": [
+        {
+            "activePatchIndex": 1,
+            "patches": [
+                {
+                    "date": 1704275430608,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n"
+                },
+                {
+                    "date": 1704275480679,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -2,6 +2,6 @@\n     <h1>Thank you!</h1>\n     <hr>\n     <p>Your feedback submission was successful.</p>\n     <p>Thank you for sharing your thoughts with us!</p>\n-    <button routerLink=\"/\">Give More Feedback</button>\n+    <button [routerLink]=\"['/']\">Give More Feedback</button>\n </div>\n"
+                }
+            ],
+            "date": 1704275430608,
+            "name": "Commit-0",
+            "content": "<div id=\"container\">\n    <h1>Thank you!</h1>\n    <hr>\n    <p>Your feedback submission was successful.</p>\n    <p>Thank you for sharing your thoughts with us!</p>\n    <button routerLink=\"/\">Give More Feedback</button>\n</div>\n"
+        }
+    ]
+}

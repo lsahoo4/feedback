@@ -1,0 +1,18 @@
+{
+    "sourceFile": "src/app/netlify-forms/netlify-forms.service.ts",
+    "activeCommit": 0,
+    "commits": [
+        {
+            "activePatchIndex": 0,
+            "patches": [
+                {
+                    "date": 1704274438430,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n"
+                }
+            ],
+            "date": 1704274438430,
+            "name": "Commit-0",
+            "content": "import { Injectable } from '@angular/core';\nimport { HttpClient, HttpErrorResponse, HttpParams } from '@angular/common/http';\nimport { Observable, throwError } from 'rxjs';\nimport { catchError } from 'rxjs/operators';\nimport { Feedback } from '../feedback/feedback.component';\n\n@Injectable({\n  providedIn: 'root'\n})\nexport class NetlifyFormsService {\n\n  constructor(private http: HttpClient) { }\n\n  submitFeedback(fbEntry: Feedback) {\n    const entry = new HttpParams({ fromObject: {\n      'form-name': 'feedbackForm',\n      ...fbEntry,\n      'rating': fbEntry.rating.toString(),\n    }});\n\n    return this.submitEntry(entry);\n  }\n\n  private submitEntry(entry: HttpParams) {\n    return this.http.post(\n      '/',\n      entry.toString(),\n      {\n        headers: { 'Content-Type': 'application/x-www-form-urlencoded' },\n        responseType: 'text'\n      }\n    ).pipe(catchError(this.handleError));\n  }\n\n  private handleError(err: HttpErrorResponse) {\n    let errMsg = '';\n\n    if (err.error instanceof ErrorEvent) {\n      errMsg = `A client-side error occurred: ${err.error.message}`;\n    } else {\n      errMsg = `A server-side error occurred. Code: ${err.status}. Message: ${err.message}`;\n    }\n\n    return throwError(errMsg);\n  }\n}\n"
+        }
+    ]
+}

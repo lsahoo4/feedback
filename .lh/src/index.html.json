@@ -1,0 +1,46 @@
+{
+    "sourceFile": "src/index.html",
+    "activeCommit": 0,
+    "commits": [
+        {
+            "activePatchIndex": 7,
+            "patches": [
+                {
+                    "date": 1704274350437,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n"
+                },
+                {
+                    "date": 1704276385856,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -4,8 +4,9 @@\n   <meta charset=\"utf-8\">\n   <title>Feedback</title>\n   <base href=\"/\">\n   <meta name=\"viewport\" content=\"width=device-width, initial-scale=1\">\n+  <meta http-equiv=\"Content-Security-Policy\" content=\"default-src 'self'; script-src 'self'\">\n   <link rel=\"icon\" type=\"image/x-icon\" href=\"favicon.ico\">\n </head>\n <body>\n   <form name=\"feedbackForm\" netlify netlify-honeypot=\"bot-field\" hidden>\n"
+                },
+                {
+                    "date": 1704276473878,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -4,9 +4,9 @@\n   <meta charset=\"utf-8\">\n   <title>Feedback</title>\n   <base href=\"/\">\n   <meta name=\"viewport\" content=\"width=device-width, initial-scale=1\">\n-  <meta http-equiv=\"Content-Security-Policy\" content=\"default-src 'self'; script-src 'self'\">\n+  <meta http-equiv=\"Content-Security-Policy\" content=\"default-src 'self' 'sha256-AF490//jIflwN/2nTDszvAx/KI2V9GJG8gdwvGhO/zw='\">\n   <link rel=\"icon\" type=\"image/x-icon\" href=\"favicon.ico\">\n </head>\n <body>\n   <form name=\"feedbackForm\" netlify netlify-honeypot=\"bot-field\" hidden>\n"
+                },
+                {
+                    "date": 1704276552127,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -4,10 +4,15 @@\n   <meta charset=\"utf-8\">\n   <title>Feedback</title>\n   <base href=\"/\">\n   <meta name=\"viewport\" content=\"width=device-width, initial-scale=1\">\n-  <meta http-equiv=\"Content-Security-Policy\" content=\"default-src 'self' 'sha256-AF490//jIflwN/2nTDszvAx/KI2V9GJG8gdwvGhO/zw='\">\n-  <link rel=\"icon\" type=\"image/x-icon\" href=\"favicon.ico\">\n+  <meta http-equiv=\"Content-Security-Policy\"\n+  content=\"default-src 'self' data:gap: http://www.visitsingapore.com \n+  https://ssl.gstatic.com 'unsafe-eval';\n+  style-src 'self' 'unsafe-inline';\n+  media-src *;\n+  script-src 'sha256-V+/U3qbjHKP0SaNQhMwYNm62gfWX4QHwPJ7We1PXokI='\n+\">  <link rel=\"icon\" type=\"image/x-icon\" href=\"favicon.ico\">\n </head>\n <body>\n   <form name=\"feedbackForm\" netlify netlify-honeypot=\"bot-field\" hidden>\n     <input type=\"text\" name=\"firstName\"/>\n"
+                },
+                {
+                    "date": 1704276619683,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -5,13 +5,9 @@\n   <title>Feedback</title>\n   <base href=\"/\">\n   <meta name=\"viewport\" content=\"width=device-width, initial-scale=1\">\n   <meta http-equiv=\"Content-Security-Policy\"\n-  content=\"default-src 'self' data:gap: http://www.visitsingapore.com \n-  https://ssl.gstatic.com 'unsafe-eval';\n-  style-src 'self' 'unsafe-inline';\n-  media-src *;\n-  script-src 'sha256-V+/U3qbjHKP0SaNQhMwYNm62gfWX4QHwPJ7We1PXokI='\n+  content=\"default-src *; style-src 'self' http://* 'unsafe-inline'; script-src 'self' http://* 'unsafe-inline' 'unsafe-eval'\n \">  <link rel=\"icon\" type=\"image/x-icon\" href=\"favicon.ico\">\n </head>\n <body>\n   <form name=\"feedbackForm\" netlify netlify-honeypot=\"bot-field\" hidden>\n"
+                },
+                {
+                    "date": 1704276674392,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -5,9 +5,13 @@\n   <title>Feedback</title>\n   <base href=\"/\">\n   <meta name=\"viewport\" content=\"width=device-width, initial-scale=1\">\n   <meta http-equiv=\"Content-Security-Policy\"\n-  content=\"default-src *; style-src 'self' http://* 'unsafe-inline'; script-src 'self' http://* 'unsafe-inline' 'unsafe-eval'\n+  content=\"default-src 'self' data:gap: http://www.visitsingapore.com \n+  https://ssl.gstatic.com 'unsafe-eval';\n+  style-src 'self' 'unsafe-inline';\n+  media-src *;\n+  script-src 'ha256-AF490//jIflwN/2nTDszvAx/KI2V9GJG8gdwvGhO/zw='\n \">  <link rel=\"icon\" type=\"image/x-icon\" href=\"favicon.ico\">\n </head>\n <body>\n   <form name=\"feedbackForm\" netlify netlify-honeypot=\"bot-field\" hidden>\n"
+                },
+                {
+                    "date": 1704276772864,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -10,9 +10,11 @@\n   https://ssl.gstatic.com 'unsafe-eval';\n   style-src 'self' 'unsafe-inline';\n   media-src *;\n   script-src 'ha256-AF490//jIflwN/2nTDszvAx/KI2V9GJG8gdwvGhO/zw='\n-\">  <link rel=\"icon\" type=\"image/x-icon\" href=\"favicon.ico\">\n+\">\n+<link rel=\"icon\" type=\"image/x-icon\" href=\"favicon.ico\">\n+<script nonce=\"your-unique-nonce\">console.log('Hello, world!');</script>\n </head>\n <body>\n   <form name=\"feedbackForm\" netlify netlify-honeypot=\"bot-field\" hidden>\n     <input type=\"text\" name=\"firstName\"/>\n"
+                },
+                {
+                    "date": 1704276979251,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -4,17 +4,17 @@\n   <meta charset=\"utf-8\">\n   <title>Feedback</title>\n   <base href=\"/\">\n   <meta name=\"viewport\" content=\"width=device-width, initial-scale=1\">\n-  <meta http-equiv=\"Content-Security-Policy\"\n+  <!-- <meta http-equiv=\"Content-Security-Policy\"\n   content=\"default-src 'self' data:gap: http://www.visitsingapore.com \n   https://ssl.gstatic.com 'unsafe-eval';\n   style-src 'self' 'unsafe-inline';\n   media-src *;\n   script-src 'ha256-AF490//jIflwN/2nTDszvAx/KI2V9GJG8gdwvGhO/zw='\n \">\n <link rel=\"icon\" type=\"image/x-icon\" href=\"favicon.ico\">\n-<script nonce=\"your-unique-nonce\">console.log('Hello, world!');</script>\n+<script nonce=\"your-unique-nonce\">console.log('Hello, world!');</script> -->\n </head>\n <body>\n   <form name=\"feedbackForm\" netlify netlify-honeypot=\"bot-field\" hidden>\n     <input type=\"text\" name=\"firstName\"/>\n"
+                }
+            ],
+            "date": 1704274350437,
+            "name": "Commit-0",
+            "content": "<!doctype html>\n<html lang=\"en\">\n<head>\n  <meta charset=\"utf-8\">\n  <title>Feedback</title>\n  <base href=\"/\">\n  <meta name=\"viewport\" content=\"width=device-width, initial-scale=1\">\n  <link rel=\"icon\" type=\"image/x-icon\" href=\"favicon.ico\">\n</head>\n<body>\n  <form name=\"feedbackForm\" netlify netlify-honeypot=\"bot-field\" hidden>\n    <input type=\"text\" name=\"firstName\"/>\n    <input type=\"text\" name=\"lastName\"/>\n    <input type=\"text\" name=\"email\"/>\n    <input type=\"text\" name=\"feedbackType\"/>\n    <input type=\"text\" name=\"description\"/>\n    <input type=\"text\" name=\"rating\"/>\n  </form>\n  <app-root></app-root>\n</body>\n</html>\n"
+        }
+    ]
+}

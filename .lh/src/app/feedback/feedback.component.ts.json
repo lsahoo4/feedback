@@ -1,0 +1,50 @@
+{
+    "sourceFile": "src/app/feedback/feedback.component.ts",
+    "activeCommit": 0,
+    "commits": [
+        {
+            "activePatchIndex": 8,
+            "patches": [
+                {
+                    "date": 1704274213103,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n"
+                },
+                {
+                    "date": 1704274526822,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -1,7 +1,17 @@\n import { Component } from '@angular/core';\n import { FormBuilder, ReactiveFormsModule, Validators } from '@angular/forms';\n \n+export interface Feedback {\n+  firstName: string;\n+  lastName: string;\n+  email: string;\n+  type: string;\n+  description: string;\n+  rating: number;\n+}\n+\n+\n @Component({\n   selector: 'app-feedback',\n   standalone: true,\n   imports: [ReactiveFormsModule],\n@@ -25,9 +35,9 @@\n     this.errorMsg = '';\n   }\n \n   onSubmit() {\n-    \n+   console.log(this.feedbackForm.value)\n   }\n   \n   constructor(private fb: FormBuilder) { }\n \n"
+                },
+                {
+                    "date": 1704274841450,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -1,6 +1,7 @@\n import { Component } from '@angular/core';\n import { FormBuilder, ReactiveFormsModule, Validators } from '@angular/forms';\n+import { NetlifyFormsService } from '../netlify-forms/netlify-forms.service';\n \n export interface Feedback {\n   firstName: string;\n   lastName: string;\n@@ -34,11 +35,13 @@\n   closeError() {\n     this.errorMsg = '';\n   }\n \n-  onSubmit() {\n-   console.log(this.feedbackForm.value)\n+  onSubmit() {;\n+    const fedback: Feedback = this.feedbackForm.value as Feedback;\n+    console.log(fedback);\n+    this.formsService.submitFeedback(fedback)\n   }\n   \n-  constructor(private fb: FormBuilder) { }\n+  constructor(private fb: FormBuilder, private formsService: NetlifyFormsService) { }\n \n }\n"
+                },
+                {
+                    "date": 1704274928548,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -1,7 +1,8 @@\n import { Component } from '@angular/core';\n import { FormBuilder, ReactiveFormsModule, Validators } from '@angular/forms';\n import { NetlifyFormsService } from '../netlify-forms/netlify-forms.service';\n+import { HttpClientModule } from '@angular/common/http';\n \n export interface Feedback {\n   firstName: string;\n   lastName: string;\n@@ -14,9 +15,9 @@\n \n @Component({\n   selector: 'app-feedback',\n   standalone: true,\n-  imports: [ReactiveFormsModule],\n+  imports: [ReactiveFormsModule, HttpClientModule],\n   templateUrl: './feedback.component.html',\n   styleUrl: './feedback.component.css'\n })\n export class FeedbackComponent {\n"
+                },
+                {
+                    "date": 1704275023591,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -39,9 +39,9 @@\n \n   onSubmit() {;\n     const fedback: Feedback = this.feedbackForm.value as Feedback;\n     console.log(fedback);\n-    this.formsService.submitFeedback(fedback)\n+    // this.formsService.submitFeedback(fedback)\n   }\n   \n   constructor(private fb: FormBuilder, private formsService: NetlifyFormsService) { }\n \n"
+                },
+                {
+                    "date": 1704275034290,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -42,7 +42,7 @@\n     console.log(fedback);\n     // this.formsService.submitFeedback(fedback)\n   }\n   \n-  constructor(private fb: FormBuilder, private formsService: NetlifyFormsService) { }\n+  constructor(private fb: FormBuilder) { }\n \n }\n"
+                },
+                {
+                    "date": 1704275063770,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -21,8 +21,10 @@\n   styleUrl: './feedback.component.css'\n })\n export class FeedbackComponent {\n \n+  constructor(private fb: FormBuilder, private formsService: NetlifyFormsService) { }\n+  \n   feedbackForm = this.fb.group({\n     firstName: ['', Validators.required],\n     lastName: ['', Validators.required],\n     email: ['', [Validators.email, Validators.required]],\n@@ -42,7 +44,6 @@\n     console.log(fedback);\n     // this.formsService.submitFeedback(fedback)\n   }\n   \n-  constructor(private fb: FormBuilder) { }\n \n }\n"
+                },
+                {
+                    "date": 1704275074468,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -22,9 +22,8 @@\n })\n export class FeedbackComponent {\n \n   constructor(private fb: FormBuilder, private formsService: NetlifyFormsService) { }\n-  \n   feedbackForm = this.fb.group({\n     firstName: ['', Validators.required],\n     lastName: ['', Validators.required],\n     email: ['', [Validators.email, Validators.required]],\n@@ -41,9 +40,9 @@\n \n   onSubmit() {;\n     const fedback: Feedback = this.feedbackForm.value as Feedback;\n     console.log(fedback);\n-    // this.formsService.submitFeedback(fedback)\n+    this.formsService.submitFeedback(fedback)\n   }\n   \n \n }\n"
+                },
+                {
+                    "date": 1704275430617,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -1,8 +1,9 @@\n import { Component } from '@angular/core';\n import { FormBuilder, ReactiveFormsModule, Validators } from '@angular/forms';\n import { NetlifyFormsService } from '../netlify-forms/netlify-forms.service';\n import { HttpClientModule } from '@angular/common/http';\n+import { Router } from '@angular/router';\n \n export interface Feedback {\n   firstName: string;\n   lastName: string;\n@@ -21,9 +22,14 @@\n   styleUrl: './feedback.component.css'\n })\n export class FeedbackComponent {\n \n-  constructor(private fb: FormBuilder, private formsService: NetlifyFormsService) { }\n+  constructor(\n+    private fb: FormBuilder, \n+    private formsService: NetlifyFormsService,\n+    private router: Router,\n+    ) { }\n+\n   feedbackForm = this.fb.group({\n     firstName: ['', Validators.required],\n     lastName: ['', Validators.required],\n     email: ['', [Validators.email, Validators.required]],\n@@ -40,9 +46,17 @@\n \n   onSubmit() {;\n     const fedback: Feedback = this.feedbackForm.value as Feedback;\n     console.log(fedback);\n-    this.formsService.submitFeedback(fedback)\n+    this.formsService.submitFeedback(fedback).subscribe(\n+      () => {\n+        this.feedbackForm.reset();\n+        this.router.navigateByUrl('/success');\n+      },\n+      err => {\n+        this.errorMsg = err;\n+      }\n+    )\n   }\n   \n \n }\n"
+                }
+            ],
+            "date": 1704274213103,
+            "name": "Commit-0",
+            "content": "import { Component } from '@angular/core';\nimport { FormBuilder, ReactiveFormsModule, Validators } from '@angular/forms';\n\n@Component({\n  selector: 'app-feedback',\n  standalone: true,\n  imports: [ReactiveFormsModule],\n  templateUrl: './feedback.component.html',\n  styleUrl: './feedback.component.css'\n})\nexport class FeedbackComponent {\n\n  feedbackForm = this.fb.group({\n    firstName: ['', Validators.required],\n    lastName: ['', Validators.required],\n    email: ['', [Validators.email, Validators.required]],\n    type: ['', Validators.required],\n    description: ['', Validators.required],\n    rating: [0, Validators.min(1)]\n  });\n\n  errorMsg = '';\n\n  closeError() {\n    this.errorMsg = '';\n  }\n\n  onSubmit() {\n    \n  }\n  \n  constructor(private fb: FormBuilder) { }\n\n}\n"
+        }
+    ]
+}
